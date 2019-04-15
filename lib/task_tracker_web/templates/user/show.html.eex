@@ -1,0 +1,60 @@
+<h1>Show User</h1>
+
+<ul>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </li>
+
+  <li>
+    <strong>Admin:</strong>
+    <%= @user.admin %>
+  </li>
+
+</ul>
+
+<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
+
+<hr>
+<div>
+<h2>Manager:</h2>
+  <table class="table table-striped">
+  <thead>
+      <tr>
+        <th>Account</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <%= if @manager do %>
+          <td><%= @manager.email %></td>
+          <td><%= link "Show", to: Routes.user_path(@conn, :show, @manager.id), class: "btn btn-primary" %> </td>
+          <% else %>
+          <td> No manager </td>
+          <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<hr>
+
+<div>
+  <h2>Underlings:</h2>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Account</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <%= for underling <- @user.underlings do %>
+      <tr> 
+        <td><%= underling.email %></td>
+        <td><%= link "Show", to: Routes.user_path(@conn, :show, underling.id), class: "btn btn-primary" %> </td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</div>
