@@ -1,0 +1,5 @@
+/* This file is for your main application css. */
+
+// With scss, Bootstrap lets us override colors and stuff.
+$body-bg: grey;
+@import "~bootstrap/scss/bootstrap";
